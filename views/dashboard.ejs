@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - <%= pageTitle %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <!-- Logo -->
+        <div class="sidebar-header">
+            <div class="logo">M</div>
+            <h3>Madani</h3>
+        </div>
+
+        <!-- User Info -->
+        <div class="user-info">
+            <div class="user-avatar">SA</div>
+            <div class="user-details">
+                <h4>Welcome,</h4>
+                <p>Super Admin</p>
+            </div>
+        </div>
+
+        <!-- Menu -->
+        <div class="sidebar-menu">
+            <div class="menu-section">
+                <div class="menu-section-title">General</div>
+                <a href="/dashboard" class="menu-item <%= currentPage === 'home' ? 'active' : '' %>">
+                    <i class="fas fa-home"></i> Home
+                </a>
+                <a href="/projects" class="menu-item <%= currentPage === 'projects' ? 'active' : '' %>">
+                    <i class="fas fa-project-diagram"></i> Projects
+                </a>
+                <a href="/staff" class="menu-item <%= currentPage === 'staff' ? 'active' : '' %>">
+                    <i class="fas fa-users"></i> Staff
+                </a>
+                <a href="/equipments" class="menu-item <%= currentPage === 'equipments' ? 'active' : '' %>">
+                    <i class="fas fa-tools"></i> Equipments
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-title">
+                    <h1><%= pageTitle %></h1>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="search-box">
+                    <input type="text" placeholder="Search for..." id="searchInput">
+                    <button type="button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="user-dropdown">
+                    <div class="user-avatar">SA</div>
+                    <span>Super Admin</span>
+                    <a href="/logout" style="margin-left: 15px; color: #e74c3c; text-decoration: none;">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h2 class="page-title"><%= pageTitle %></h2>
+                <p class="page-subtitle"><%= pageSubtitle %></p>
+            </div>
+
+            <!-- Dynamic Content Based on Current Page -->
+            <% if (currentPage === 'home') { %>
+                <!-- Dashboard Home Content -->
+                <div class="dashboard-cards">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>7</h3>
+                            <p>Total Staff</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>3</h3>
+                            <p>Active Projects</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>3</h3>
+                            <p>Equipments</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>85%</h3>
+                            <p>Efficiency</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="welcome-section">
+                    <h3>Welcome to Admin Panel</h3>
+                    <p>Manage your staff, projects, and equipments from this dashboard. Use the sidebar navigation to access different sections.</p>
+                </div>
+
+            <% } else if (currentPage === 'staff') { %>
+                <!-- Staff Management Content -->
+                <div class="staff-section">
+                    <div class="section-header">
+                        <h3 class="section-title">All Staff Members</h3>
+                        <button class="add-btn" onclick="alert('Add Staff functionality will be added later')">
+                            <i class="fas fa-plus" style="margin-right: 8px;"></i>
+                            Add New Staff
+                        </button>
+                    </div>
+
+                    <table class="staff-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>User Name</th>
+                                <th>Contact</th>
+                                <th>Address</th>
+                                <th>#Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% data.forEach((staff, index) => { %>
+                            <tr>
+                                <td class="serial"><%= index + 1 %></td>
+                                <td>
+                                    <span class="staff-name <%= staff.name === 'jamal' ? 'highlighted' : '' %>">
+                                        <%= staff.name %>
+                                    </span>
+                                </td>
+                                <td><%= staff.username %></td>
+                                <td class="contact-info"><%= staff.contact %></td>
+                                <td class="address-info"><%= staff.address %></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-edit" onclick="alert('Edit functionality will be added later')">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </button>
+                                        <button class="btn btn-delete" onclick="alert('Delete functionality will be added later')">
+                                            <i class="fas fa-trash"></i> Delete
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+
+            <% } else if (currentPage === 'projects') { %>
+                <!-- Projects Management Content -->
+                <div class="projects-section">
+                    <div class="section-header">
+                        <h3 class="section-title">All Projects</h3>
+                        <button class="add-btn" onclick="alert('Add Project functionality will be added later')">
+                            <i class="fas fa-plus" style="margin-right: 8px;"></i>
+                            Add New Project
+                        </button>
+                    </div>
+
+                    <table class="staff-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Project Name</th>
+                                <th>Status</th>
+                                <th>Deadline</th>
+                                <th>#Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% data.forEach((project, index) => { %>
+                            <tr>
+                                <td class="serial"><%= index + 1 %></td>
+                                <td><span class="staff-name"><%= project.name %></span></td>
+                                <td>
+                                    <span class="status-badge status-<%= project.status.toLowerCase().replace(' ', '-') %>">
+                                        <%= project.status %>
+                                    </span>
+                                </td>
+                                <td class="contact-info"><%= project.deadline %></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-edit" onclick="alert('Edit functionality will be added later')">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </button>
+                                        <button class="btn btn-delete" onclick="alert('Delete functionality will be added later')">
+                                            <i class="fas fa-trash"></i> Delete
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+
+            <% } else if (currentPage === 'equipments') { %>
+                <!-- Equipment Management Content -->
+                <div class="equipments-section">
+                    <div class="section-header">
+                        <h3 class="section-title">All Equipments</h3>
+                        <button class="add-btn" onclick="alert('Add Equipment functionality will be added later')">
+                            <i class="fas fa-plus" style="margin-right: 8px;"></i>
+                            Add New Equipment
+                        </button>
+                    </div>
+
+                    <table class="staff-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Equipment Name</th>
+                                <th>Model</th>
+                                <th>Status</th>
+                                <th>Assigned To</th>
+                                <th>#Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% data.forEach((equipment, index) => { %>
+                            <tr>
+                                <td class="serial"><%= index + 1 %></td>
+                                <td><span class="staff-name"><%= equipment.name %></span></td>
+                                <td><%= equipment.model %></td>
+                                <td>
+                                    <span class="status-badge status-<%= equipment.status.toLowerCase() %>">
+                                        <%= equipment.status %>
+                                    </span>
+                                </td>
+                                <td class="contact-info"><%= equipment.assignedTo %></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-edit" onclick="alert('Edit functionality will be added later')">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </button>
+                                        <button class="btn btn-delete" onclick="alert('Delete functionality will be added later')">
+                                            <i class="fas fa-trash"></i> Delete
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        menuToggle.addEventListener('click', function() {
+            sidebar.classList.toggle('open');
+            sidebarOverlay.classList.toggle('show');
+        });
+
+        sidebarOverlay.addEventListener('click', function() {
+            sidebar.classList.remove('open');
+            sidebarOverlay.classList.remove('show');
+        });
+
+        // Search Functionality
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const tableRows = document.querySelectorAll('table tbody tr');
+            
+            tableRows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+
+        // Window resize handler
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                sidebar.classList.remove('open');
+                sidebarOverlay.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

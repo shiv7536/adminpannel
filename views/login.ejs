@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <form method="POST" action="/login">
+    <div style="text-align: center;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1024px-React-icon.svg.png" 
+           alt="Admin Logo" width="80" style="margin-bottom: 20px;" />
+    </div>
+
+    <h2 style="text-align: center;">Admin Login</h2>
+
+    <% if (error) { %>
+      <p><%= error %></p>
+    <% } %>
+
+    <label for="username">ID:</label>
+    <input type="text" id="username" name="username" required />
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required />
+
+    <button type="submit">🔒 Login</button>
+  </form>
+</body>
+</html>
