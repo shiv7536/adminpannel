@@ -1,28 +1,29 @@
 .login-container {
-  background-color: #fff;
+  background-color: #bdbdbc;
   padding: 30px 40px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  width: 350px;
-  margin: 80px auto;
+  border-radius: 15px;
+  box-shadow: 10 4px 20px rgba(247, 245, 245, 0.1);
+  width: 500px;
+  margin: 100px auto;
 }
 
 form {
   display: flex;
   flex-direction: column;
+  
 }
 
 input {
   padding: 10px;
   margin-bottom: 15px;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #171718;
 }
 
 button {
-  background: linear-gradient(to right, #007bff, #00bfff);
+  background: linear-gradient(to right, #ff0000, #00bfff);
   color: white;
-  border: none;
+  border: rgb(238, 15, 19);
   border-radius: 5px;
   padding: 12px;
   cursor: pointer;
@@ -30,5 +31,7 @@ button {
 }
 
 button:hover {
-  background: linear-gradient(to right, #0056b3, #0096c7);
+  background: linear-gradient(to right, #70fb1a, #0096c7);
 }
+
+

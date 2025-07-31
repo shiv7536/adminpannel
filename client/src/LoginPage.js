@@ -27,7 +27,7 @@ const LoginPage = () => {
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1024px-React-icon.svg.png"
                alt="Admin Logo" width="80" style={{ marginBottom: 20 }} />
         </div>
-        <center><h2>Admin Login</h2></center>
+        <center><h2>OM-Mart Admin</h2></center>
         {error && <p style={{ color: 'red' }}>{error}</p>}
 
         <label>ID:</label>
