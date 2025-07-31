@@ -13,10 +13,10 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3000/api/login', { username, password }, { withCredentials: false });
+      await axios.post('http://localhost:3000/api/login', { username, password }, { withCredentials: true });
       navigate('/dashboard');
     } catch (err) {
-      setError('ID ya Password galat hai!');
+      setError('Invalid credentials');
     }
   };
 
