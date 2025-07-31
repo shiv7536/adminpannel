@@ -8,11 +8,20 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Simple admin panel using nodejs",
   "dependencies": {
     "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "express-session": "^1.18.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shiv7536/adminpannel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shiv7536/adminpannel/issues"
+  },
+  "homepage": "https://github.com/shiv7536/adminpannel#readme"
 }
