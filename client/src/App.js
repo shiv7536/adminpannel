@@ -23,18 +23,20 @@ import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard';
 import Orders from './pages/Orders';
 import AddProduct from './pages/AddProduct';
+import AddProductForm from './pages/AddProductForm';
+import ProductView from './pages/ProductView';
 import Users from './pages/Users';
 import Settings from './pages/Settings';
+import UserDetails from './pages/UserDetails';
 
 function App() {
-  const isLoggedIn = true; // Later you can replace with auth logic
+  const isLoggedIn = true; // Replace with actual auth logic
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LoginPage />} />
 
-        {/* Protected routes */}
         {isLoggedIn && (
           <Route
             path="/dashboard/*"
@@ -46,7 +48,11 @@ function App() {
                     <Route path="" element={<Dashboard />} />
                     <Route path="orders" element={<Orders />} />
                     <Route path="add-product" element={<AddProduct />} />
+                    <Route path="add-product/new" element={<AddProductForm />} />
+                    <Route path="add-product/edit/:id" element={<AddProductForm />} />
+                    <Route path="add-product/view/:id" element={<ProductView />} />
                     <Route path="users" element={<Users />} />
+                    <Route path="users/:id" element={<UserDetails />} />
                     <Route path="settings" element={<Settings />} />
                   </Routes>
                 </div>
@@ -55,7 +61,6 @@ function App() {
           />
         )}
 
-        {/* Redirect to dashboard after login if needed */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
@@ -63,3 +68,4 @@ function App() {
 }
 
 export default App;
+
